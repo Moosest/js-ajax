@@ -34,9 +34,9 @@ function add() {
 
         </div>
         <div class="content">
-            <ItemList :items="items" title="All items"></ItemList>
-            <ItemList :items="doneItems" title="Done items"></ItemList>
-            <ItemList :items="todoItems" title="ToDo items"></ItemList>
+            <ItemList :items="items"></ItemList>
+            <ItemList :items="doneItems"></ItemList>
+            <ItemList :items="todoItems"></ItemList>
         </div>
     </div>
 </template>
