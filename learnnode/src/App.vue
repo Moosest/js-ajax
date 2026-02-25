@@ -1,13 +1,14 @@
 <script setup>
+
 import { ref } from 'vue';
-import Modal from './Components/Modal.vue';
-let modal1Active = ref(false);
+import RouterTabs from './Components/RouterTabs.vue';
+
 
 </script>
+
 <template>
-    <div class="container">
-        <button class="button is-primary" @click="modal1Active=true">Open Modal</button>
-        <Modal :active="modal1Active" @close="modal1Active=false"></Modal>
-    </div>
+    <RouterTabs></RouterTabs>
+    <RouterView></RouterView>
 </template>
+
 <style></style>
