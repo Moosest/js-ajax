@@ -64,7 +64,7 @@ let pages = computed(() => {
             <button class="pagination-previous" :disabled="!pagination.prev" @click="prev">Previous</button>
             <button class="pagination-next" :disabled="!pagination.next" @click="next">Next page</button>
             <ul class="pagination-list">
-                <li v-for="page in pages">
+                <li v-for="page in pages" :key="String(page)">
 
                     <span v-if="page === '...'" class="pagination-ellipsis">&hellip;</span>
                     <button v-else-if="page === current" class="pagination-link is-current" aria-label="Page 46"
@@ -86,7 +86,7 @@ let pages = computed(() => {
             </ul>
         </nav>
         <div class="columns is-multiline">
-            <div class="column is-3" v-for="character in characters">
+            <div class="column is-3" v-for="character in characters" :key="character.id">
                 <CharacterCard :character="character"></CharacterCard>
             </div>
         </div>
