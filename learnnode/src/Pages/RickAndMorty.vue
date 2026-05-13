@@ -11,13 +11,15 @@ let pagination = ref({
 
 })
 
-let current = ref(20)
+let current = ref(1)
+let searchInput = ref('')
 await getCharacters(current.value)
 async function getCharacters(page) {
     current.value = page
     let res = await axios.get("https://rickandmortyapi.com/api/character", {
         params: {
-            page: page
+            page: page,
+            name: searchInput.value
         }
     })
     console.log(res.data);
@@ -56,10 +58,26 @@ let pages = computed(() => {
 
     return pages.filter(p => p)
 })
+
+async function search() {
+    await getCharacters(1)
+
+}
+
 </script>
 
 <template>
     <div class="container">
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input @keydown.enter="search" v-model="searchInput" class="input" type="text" placeholder="Name">
+            </div>
+            <div class="control">
+                <button class="button is-info" @click="search">
+                    Search
+                </button>
+            </div>
+        </div>
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
             <button class="pagination-previous" :disabled="!pagination.prev" @click="prev">Previous</button>
             <button class="pagination-next" :disabled="!pagination.next" @click="next">Next page</button>
