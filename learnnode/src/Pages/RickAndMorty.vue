@@ -83,6 +83,8 @@ function search() {
         await getCharacters(1)
     }, 1000);
 
+}
+
 </script>
 
 <template>
